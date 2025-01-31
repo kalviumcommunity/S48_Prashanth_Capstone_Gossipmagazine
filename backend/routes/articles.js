@@ -8,13 +8,34 @@ let articles = [
 ];
 
 router.get("/articles", (req, res) => {
-  res.json(articles);
+  res.status(200).json(articles);
 });
 
 router.get("/articles/:id", (req, res) => {
   const article = articles.find(a => a.id === parseInt(req.params.id));
   if (!article) return res.status(404).json({ message: "Article not found" });
-  res.json(article);
+  res.status(200).json(article);
+});
+
+router.post("/articles", (req, res) => {
+  console.log("Request Body:", req.body);
+
+  const { title, content, author } = req.body;
+  
+  if (!title || !content || !author) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
+
+  const newArticle = {
+    id: articles.length + 1,
+    title,
+    content,
+    author,
+  };
+
+  articles.push(newArticle);
+  
+  res.status(201).json(newArticle);
 });
 
 module.exports = router;
