@@ -1,0 +1,20 @@
+meta {
+  name: Update Article
+  type: http
+  seq: 1
+}
+
+put {
+  url: http://localhost:5000/api/articles/2
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Updated Political Drama",
+    "content": "New shocking revelations in politics.",
+    "author": "Jane Smith"
+  }
+  
+}
