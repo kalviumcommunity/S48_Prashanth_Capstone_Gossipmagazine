@@ -38,4 +38,23 @@ router.post("/articles", (req, res) => {
   res.status(201).json(newArticle);
 });
 
+router.put("/articles/:id", (req, res) => {
+  const articleId = parseInt(req.params.id);
+  const { title, content, author } = req.body;
+
+  const articleIndex = articles.findIndex(a => a.id === articleId);
+  
+  if (articleIndex === -1) {
+    return res.status(404).json({ message: "Article not found" });
+  }
+
+  if (!title || !content || !author) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
+
+  articles[articleIndex] = { id: articleId, title, content, author };
+
+  res.status(200).json({ message: "Article updated successfully", article: articles[articleIndex] });
+});
+
 module.exports = router;
