@@ -6,6 +6,14 @@ meta {
 
 post {
   url: http://localhost:5000/api/articles
-  body: none
+  body: json
   auth: none
+}
+
+body:json {
+    {
+      "title": "Updated Political Drama",
+      "content": "New shocking revelations in politics.",
+      "author": "Jane Smith"
+    }
 }

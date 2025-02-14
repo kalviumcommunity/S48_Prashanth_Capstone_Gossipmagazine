@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Article = require("../models/Article");
 
-// GET all articles
 router.get("/articles", async (req, res) => {
   try {
     const articles = await Article.find();
@@ -12,7 +11,6 @@ router.get("/articles", async (req, res) => {
   }
 });
 
-// GET article by ID
 router.get("/articles/:id", async (req, res) => {
   try {
     const article = await Article.findById(req.params.id);
@@ -23,7 +21,6 @@ router.get("/articles/:id", async (req, res) => {
   }
 });
 
-// POST a new article
 router.post("/articles", async (req, res) => {
   try {
     const { title, content, author } = req.body;
@@ -38,7 +35,6 @@ router.post("/articles", async (req, res) => {
   }
 });
 
-// PUT update an article
 router.put("/articles/:id", async (req, res) => {
   try {
     const { title, content, author } = req.body;
