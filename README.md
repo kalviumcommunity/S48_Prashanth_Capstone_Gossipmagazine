@@ -77,3 +77,4 @@ Contributions are welcome! Please follow these steps:
 This project is licensed under the MIT License.
 
 Deployed backend server Link : https://s48-prashanth-capstone-gossipmagazine.onrender.com/api/articles
+
